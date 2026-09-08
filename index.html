@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GMU Digital ID Card Generator</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.css" />
+</head>
+<body>
+<hr>
+  <div class="workspace">
+    <!-- LEFT PANEL: DATA FORM -->
+    <div class="form-card">
+      <h2>Student Details</h2>
+      <form id="idForm">
+        
+        <div class="form-row">
+          <label>Upload Photo:</label>
+          <input type="file" id="photoInput" accept="image/*">
+        </div>
+
+        <div class="form-row">
+          <label>Student Full Name:</label>
+          <input type="text" id="nameInput" value="" placeholder="ENTER NAME">
+        </div>
+
+        <div class="form-row">
+          <label>Roll Number:</label>
+          <input type="text" id="rollInput" value="" placeholder="e.g. BA24-0xx">
+        </div>
+
+        <div class="form-row">
+          <label>Course Type:</label>
+          <div class="radio-box">
+            <label><input type="radio" name="courseType" value="BA" checked> Regular B.A.</label>
+            <label><input type="radio" name="courseType" value="BED"> Integrated B.A. B.Ed</label>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <label>Department (Honours):</label>
+          <select id="subjectSelect">
+            <option value="Economics" selected>Economics</option>
+            <option value="English">English</option>
+            <option value="Odia">Odia</option>
+            <option value="History">History</option>
+            <option value="Political Science">Political Science</option>
+            <option value="Geography">Geography</option>
+            <option value="Education">Education</option>
+            <option value="Philosophy">Philosophy</option>
+            <option value="Psychology">Psychology</option>
+            <option value="Sanskrit">Sanskrit</option>
+            <option value="Sociology">Sociology</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Mathematics">Mathematics</option>
+            <option value="Statistics">Statistics</option>
+            <option value="Anthropology">Anthropology</option>
+          </select>
+        </div>
+
+        <div class="form-row">
+          <label>Session:</label>
+          <input type="text" id="sessionInput" value="2024-2027">
+        </div>
+
+        <div class="button-group">
+          <button type="button" id="downloadBtn" class="btn btn-primary">Download ID Card (PNG)</button>
+          <button type="button" id="printBtn" class="btn btn-dark">Print Card</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- RIGHT PANEL: EXACT 1:1 ID CARD PREVIEW -->
+    <div class="preview-area">
+      <div class="id-card-wrapper" id="idCard">
+        
+        <!-- CORNER BLUE GRAPHICS (From Original Card) -->
+        <div class="curve-graphic-left"></div>
+        <div class="curve-graphic-right"></div>
+
+        <!-- HEADER SECTION -->
+        <div class="gmu-header">
+          <div class="logo-box">
+            <img src="logo.png" alt="GMU Logo" class="univ-emblem" onerror="this.src='https://via.placeholder.com/60?text=LOGO'">
+          </div>
+          <div class="title-box">
+            <h1 class="gmu-title">GMU</h1>
+            <h2 class="gmu-subtitle">GANGADHAR MEHER<br>UNIVERSITY</h2>
+          </div>
+        </div>
+
+        <!-- ADDRESS DETAILS -->
+        <div class="gmu-address">
+          <p class="addr-line">Amruta Vihar, Sambalpur, Odisha - 768004</p>
+          <p class="web-line">Web: www.gmuniversity.ac.in</p>
+        </div>
+
+        <!-- STUDENT PHOTO: EXACT 2.5cm x 2.8cm -->
+        <div class="photo-frame">
+          <img id="cardPhoto" src="https://via.placeholder.com/300x336?text=Upload+Photo" alt="Student Photo">
+        </div>
+
+        <!-- SOLID BLUE NAME BANNER -->
+        <div class="name-strip">
+          <span id="cardName">SUBRAT KUMAR RATHA</span>
+        </div>
+
+        <!-- BLUEPRINT 4.8cm x 1.4cm BOX -->
+        <div class="academic-container">
+          <!-- 0.3cm Left Accent Stripe from Blueprint -->
+          <div class="accent-bar"></div>
+          
+          <!-- Details in Cyan Card Box -->
+          <div class="info-content">
+            <div class="detail-row">
+              <span class="label">Roll No :</span>
+              <span class="val" id="cardRoll">BA24-035</span>
+            </div>
+            <div class="detail-row stream-row">
+              <span class="label">Stream :</span>
+              <span class="val" id="cardStream">Arts (Honours: Economics)</span>
+            </div>
+            <div class="detail-row">
+              <span class="label">Session :</span>
+              <span class="val" id="cardSession">2024-2027</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUBTLE WATERMARK IN BOTTOM WHITE AREA -->
+        <div class="bottom-watermark"></div>
+
+        <!-- REGISTRAR SIGNATURE -->
+        <div class="registrar-block">
+          <img src="signature.png" alt="Signature" class="sig-image" onerror="this.style.visibility='hidden'">
+          <span class="sig-label">Registrar</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- CROPPER MODAL -->
+  <div id="cropModal" class="crop-modal">
+    <div class="crop-dialog">
+      <h3>Adjust & Crop Photo (Passport Size)</h3>
+      <div class="crop-area">
+        <img id="cropImageTarget" src="" alt="To Crop">
+      </div>
+      <div class="crop-footer">
+        <button id="btnCancelCrop" class="c-btn cancel">Cancel</button>
+        <button id="btnApplyCrop" class="c-btn apply">OK</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.1/cropper.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

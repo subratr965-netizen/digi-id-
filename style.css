@@ -1,0 +1,399 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background: #dbeafe;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.workspace {
+  background: #ffffff;
+  display: flex;
+  gap: 35px;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(0, 30, 80, 0.12);
+  max-width: 960px;
+  width: 100%;
+}
+
+/* FORM STYLES */
+.form-card {
+  flex: 1;
+}
+
+.form-card h2 {
+  font-size: 1.25rem;
+  color: #0b3c74;
+  margin-bottom: 16px;
+  border-bottom: 2px solid #e2e8f0;
+  padding-bottom: 6px;
+}
+
+.form-row {
+  margin-bottom: 12px;
+}
+
+.form-row label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.form-row input[type="text"],
+.form-row select,
+.form-row input[type="file"] {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  font-size: 0.88rem;
+}
+
+.radio-box {
+  display: flex;
+  gap: 15px;
+  margin-top: 4px;
+}
+
+.radio-box label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.button-group {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-primary { background: #0b3c74; color: #fff; }
+.btn-dark { background: #1e293b; color: #fff; }
+
+/* ====================================================
+   CARD DIMENSIONS: EXACT 5.3cm WIDTH x 8.5cm HEIGHT
+   ==================================================== */
+.preview-area {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.id-card-wrapper {
+  width: 5.3cm;
+  height: 8.5cm;
+  background-color: #ffffff; /* Card base is white */
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #94a3b8;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Authentic Curves from the photo */
+.curve-graphic-left {
+  position: absolute;
+  top: 1.6cm;
+  left: -2.3cm;
+  width: 3.5cm;
+  height: 3.5cm;
+  background: #0d4e96;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.curve-graphic-right {
+  position: absolute;
+  top: 1.6cm;
+  right: -2.3cm;
+  width: 3.5cm;
+  height: 3.5cm;
+  background: #0d4e96;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* HEADER: Text and Logo */
+.gmu-header {
+  position: absolute;
+  top: 0.15cm;
+  left: 0.15cm;
+  width: 5.0cm;
+  height: 1.3cm;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+}
+
+.logo-box {
+  width: 1.25cm;
+  height: 1.25cm;
+  flex-shrink: 0;
+}
+
+.univ-emblem {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.title-box {
+  margin-left: 0.15cm;
+}
+
+.gmu-title {
+  font-size: 0.65cm;
+  font-weight: 900;
+  color: #0b3c74;
+  line-height: 0.55cm;
+  letter-spacing: 0.5px;
+}
+
+.gmu-subtitle {
+  font-size: 0.165cm;
+  font-weight: 800;
+  color: #0b3c74;
+  line-height: 0.22cm;
+  letter-spacing: 0.2px;
+}
+
+/* ADDRESS STRIP */
+.gmu-address {
+  position: absolute;
+  top: 1.48cm;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  color: #0b3c74;
+  z-index: 2;
+}
+
+.addr-line {
+  font-size: 0.15cm;
+  font-weight: 600;
+  line-height: 0.2cm;
+}
+
+.web-line {
+  font-size: 0.14cm;
+  font-weight: bold;
+  line-height: 0.18cm;
+}
+
+/* PHOTO BOX: EXACT 2.5cm x 2.8cm (Blueprint) */
+.photo-frame {
+  position: absolute;
+  top: 1.95cm;
+  left: 1.4cm; /* (5.3 - 2.5) / 2 = 1.4cm Centered */
+  width: 2.5cm;
+  height: 2.8cm;
+  border: 1px solid #0b3c74;
+  background: #ffffff;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.photo-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* SOLID DARK BLUE NAME STRIP */
+.name-strip {
+  position: absolute;
+  top: 4.88cm;
+  left: 0;
+  width: 100%;
+  height: 0.52cm;
+  background: #0b3c74;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 4;
+}
+
+#cardName {
+  font-size: 0.27cm;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+}
+
+/* BLUEPRINT 4.8cm x 1.4cm ACADEMIC BLOCK */
+.academic-container {
+  position: absolute;
+  top: 5.52cm;
+  left: 0.25cm;
+  width: 4.8cm;
+  height: 1.4cm;
+  display: flex;
+  background: #c5dbf5; /* Authentic light cyan/blue shade from original card */
+  border: 1px solid #94b8e2;
+  border-radius: 3px;
+  overflow: hidden;
+  z-index: 4;
+}
+
+/* Blueprint 0.3cm Accent Bar */
+.accent-bar {
+  width: 0.3cm;
+  height: 100%;
+  background: #0b3c74;
+  flex-shrink: 0;
+}
+
+.info-content {
+  flex: 1;
+  padding: 0.08cm 0.15cm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.detail-row {
+  display: flex;
+  align-items: baseline;
+  line-height: 0.28cm;
+}
+
+.detail-row .label {
+  width: 1.4cm;
+  font-size: 0.21cm;
+  font-weight: bold;
+  color: #0b3c74;
+  flex-shrink: 0;
+}
+
+.detail-row .val {
+  font-size: 0.21cm;
+  font-weight: bold;
+  color: #0b3c74;
+  word-break: break-word;
+}
+
+/* Watermark in bottom section */
+.bottom-watermark {
+  position: absolute;
+  bottom: 0.1cm;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2.2cm;
+  height: 2.2cm;
+  background-image: url('logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.08;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* REGISTRAR SIGNATURE (BOTTOM RIGHT) */
+.registrar-block {
+  position: absolute;
+  bottom: 0.12cm;
+  right: 0.35cm;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 4;
+}
+
+.sig-image {
+  height: 0.4cm;
+  width: auto;
+  filter: contrast(150%);
+}
+
+.sig-label {
+  font-size: 0.19cm;
+  font-weight: bold;
+  color: #1e293b;
+  line-height: 0.22cm;
+}
+
+/* CROPPER MODAL */
+.crop-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  justify-content: center;
+  align-items: center;
+}
+
+.crop-dialog {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 440px;
+}
+
+.crop-area {
+  width: 100%;
+  height: 300px;
+  background: #000;
+  margin: 15px 0;
+}
+
+.crop-area img {
+  max-width: 100%;
+}
+
+.crop-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.c-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.c-btn.cancel { background: #cbd5e1; }
+.c-btn.apply { background: #0b3c74; color: #fff; }
+
+@media print {
+  body * { visibility: hidden; }
+  .preview-area, .preview-area * { visibility: visible; }
+  .preview-area {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+}
