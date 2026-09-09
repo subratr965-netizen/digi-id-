@@ -22,14 +22,11 @@ body {
   padding: 30px;
   border-radius: 14px;
   box-shadow: 0 10px 30px rgba(0, 30, 80, 0.12);
-  max-width: 960px;
+  max-width: 980px;
   width: 100%;
 }
 
-/* FORM STYLES */
-.form-card {
-  flex: 1;
-}
+.form-card { flex: 1; }
 
 .form-card h2 {
   font-size: 1.25rem;
@@ -39,16 +36,64 @@ body {
   padding-bottom: 6px;
 }
 
-.form-row {
-  margin-bottom: 12px;
+.verification-box {
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  padding: 14px;
+  border-radius: 8px;
+  margin-bottom: 15px;
 }
+
+.verification-box label {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: bold;
+  color: #1e293b;
+  margin-bottom: 5px;
+}
+
+.input-inline {
+  display: flex;
+  gap: 8px;
+}
+
+.input-inline input {
+  flex: 1;
+  padding: 8px 10px;
+  border: 1px solid #94a3b8;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+}
+
+.status-msg {
+  margin-top: 8px;
+  font-size: 0.85rem;
+  font-weight: bold;
+  display: none;
+}
+.status-msg.error { color: #dc2626; display: block; }
+.status-msg.success { color: #16a34a; display: block; }
+.status-msg.loading { color: #2563eb; display: block; }
+
+.locked-form {
+  opacity: 0.55;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.locked-form.unlocked {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.form-row { margin-bottom: 11px; }
 
 .form-row label {
   display: block;
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   font-weight: bold;
   color: #334155;
-  margin-bottom: 4px;
+  margin-bottom: 3px;
 }
 
 .form-row input[type="text"],
@@ -59,6 +104,12 @@ body {
   border: 1px solid #cbd5e1;
   border-radius: 5px;
   font-size: 0.88rem;
+}
+
+.form-row input[readonly] {
+  background-color: #f1f5f9;
+  font-weight: bold;
+  color: #0b3c74;
 }
 
 .radio-box {
@@ -72,10 +123,11 @@ body {
   align-items: center;
   gap: 6px;
   cursor: pointer;
+  font-size: 0.85rem;
 }
 
 .button-group {
-  margin-top: 18px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -90,12 +142,24 @@ body {
   font-size: 0.9rem;
 }
 
+.btn-verify {
+  background: #0284c7;
+  color: #fff;
+  padding: 8px 14px;
+  white-space: nowrap;
+}
+
 .btn-primary { background: #0b3c74; color: #fff; }
+.btn-primary:disabled, .btn-dark:disabled {
+  background: #94a3b8;
+  cursor: not-allowed;
+}
+
 .btn-dark { background: #1e293b; color: #fff; }
 
-/* ====================================================
-   CARD DIMENSIONS: EXACT 5.3cm WIDTH x 8.5cm HEIGHT
-   ==================================================== */
+/* =========================================
+   CARD EXACT 5.3cm x 8.5cm
+   ========================================= */
 .preview-area {
   display: flex;
   justify-content: center;
@@ -105,7 +169,7 @@ body {
 .id-card-wrapper {
   width: 5.3cm;
   height: 8.5cm;
-  background-color: #ffffff; /* Card base is white */
+  background-color: #ffffff;
   position: relative;
   overflow: hidden;
   border: 1px solid #94a3b8;
@@ -113,7 +177,6 @@ body {
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
-/* Authentic Curves from the photo */
 .curve-graphic-left {
   position: absolute;
   top: 1.6cm;
@@ -136,7 +199,6 @@ body {
   z-index: 1;
 }
 
-/* HEADER: Text and Logo */
 .gmu-header {
   position: absolute;
   top: 0.15cm;
@@ -161,9 +223,7 @@ body {
   object-fit: cover;
 }
 
-.title-box {
-  margin-left: 0.15cm;
-}
+.title-box { margin-left: 0.15cm; }
 
 .gmu-title {
   font-size: 0.65cm;
@@ -181,7 +241,6 @@ body {
   letter-spacing: 0.2px;
 }
 
-/* ADDRESS STRIP */
 .gmu-address {
   position: absolute;
   top: 1.48cm;
@@ -204,11 +263,10 @@ body {
   line-height: 0.18cm;
 }
 
-/* PHOTO BOX: EXACT 2.5cm x 2.8cm (Blueprint) */
 .photo-frame {
   position: absolute;
   top: 1.95cm;
-  left: 1.4cm; /* (5.3 - 2.5) / 2 = 1.4cm Centered */
+  left: 1.4cm;
   width: 2.5cm;
   height: 2.8cm;
   border: 1px solid #0b3c74;
@@ -224,7 +282,6 @@ body {
   display: block;
 }
 
-/* SOLID DARK BLUE NAME STRIP */
 .name-strip {
   position: absolute;
   top: 4.88cm;
@@ -245,7 +302,6 @@ body {
   letter-spacing: 0.4px;
 }
 
-/* BLUEPRINT 4.8cm x 1.4cm ACADEMIC BLOCK */
 .academic-container {
   position: absolute;
   top: 5.52cm;
@@ -253,14 +309,13 @@ body {
   width: 4.8cm;
   height: 1.4cm;
   display: flex;
-  background: #c5dbf5; /* Authentic light cyan/blue shade from original card */
+  background: #c5dbf5;
   border: 1px solid #94b8e2;
   border-radius: 3px;
   overflow: hidden;
   z-index: 4;
 }
 
-/* Blueprint 0.3cm Accent Bar */
 .accent-bar {
   width: 0.3cm;
   height: 100%;
@@ -297,7 +352,6 @@ body {
   word-break: break-word;
 }
 
-/* Watermark in bottom section */
 .bottom-watermark {
   position: absolute;
   bottom: 0.1cm;
@@ -314,7 +368,30 @@ body {
   pointer-events: none;
 }
 
-/* REGISTRAR SIGNATURE (BOTTOM RIGHT) */
+/* SHARP QR CODE */
+.qr-block {
+  position: absolute;
+  bottom: 0.12cm;
+  left: 0.3cm;
+  width: 1.1cm;
+  height: 1.1cm;
+  background: #ffffff;
+  padding: 1px;
+  border: 1px solid #94a3b8;
+  border-radius: 2px;
+  z-index: 4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#cardQrImage {
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  display: block;
+}
+
 .registrar-block {
   position: absolute;
   bottom: 0.12cm;
@@ -338,7 +415,7 @@ body {
   line-height: 0.22cm;
 }
 
-/* CROPPER MODAL */
+/* CROP MODAL */
 .crop-modal {
   display: none;
   position: fixed;
@@ -367,9 +444,7 @@ body {
   margin: 15px 0;
 }
 
-.crop-area img {
-  max-width: 100%;
-}
+.crop-area img { max-width: 100%; }
 
 .crop-footer {
   display: flex;
@@ -384,7 +459,6 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-
 .c-btn.cancel { background: #cbd5e1; }
 .c-btn.apply { background: #0b3c74; color: #fff; }
 
